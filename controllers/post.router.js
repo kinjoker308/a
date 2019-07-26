@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const {Post} = require('../models/post.model')
+const Post = require('../business/post.business')
 
 router.post('/create',(req,res)=>{
-    const {content} = req.body
-    const author = req.userId
+    const {content} = req.body;
+    const author = req.userId;
     Post.createPost(author,content)
     .then(post=>res.send({
         code: 1,
